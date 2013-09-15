@@ -12,8 +12,6 @@
 function meetup_blocks_core_menu() {
   $items['videos/%'] = array(
     'title' => 'Videos',
-    // 'title callback' => 'meetup_blocks_core_video_title',
-    // 'title arguments' => array(1),
     'description' => 'Retrieves video youtube information.',
     'page callback' => 'meetup_blocks_core_video',
     'page arguments' => array(1),
@@ -24,18 +22,6 @@ function meetup_blocks_core_menu() {
 
   return $items;
 }
-
-
-/**
- * Returns a menu title which includes the number of unapproved comments.
- */
-// function meetup_blocks_core_video_title($video_id) {
-//   // $params = array();
-//   // $params['id'] = check_plain($video_id);
-//   // $youtube = new Drupal\youtube_api\YoutubeVideo($params);
-//   // $title = $youtube->getTitle();
-//   // return $title;
-// }
 
 
 /**

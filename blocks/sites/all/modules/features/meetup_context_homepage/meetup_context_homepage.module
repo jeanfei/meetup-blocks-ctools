@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Meetup - context - Homepage feature.
+ */
+
+include_once 'meetup_context_homepage.features.inc';

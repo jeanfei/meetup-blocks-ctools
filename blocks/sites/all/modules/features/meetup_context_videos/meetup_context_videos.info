@@ -1,0 +1,12 @@
+name = Meetup - context - Videos
+description = Provides videos feature
+core = 7.x
+package = Meetup - context
+version = 7.x-1.0
+project = meetup_context_videos
+dependencies[] = context
+dependencies[] = ctools
+dependencies[] = meetup_blocks_core
+features[context][] = videos
+features[ctools][] = context:context:3
+features[features_api][] = api:2

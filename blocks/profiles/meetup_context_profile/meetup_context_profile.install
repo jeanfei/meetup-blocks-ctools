@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Install, update and uninstall functions for the meetup_blocks_profile install profile.
+ * Install, update and uninstall functions for the meetup_context_profile install profile.
  */
 
 
@@ -12,7 +12,7 @@
  *
  * @see system_install()
  */
-function meetup_blocks_profile_install() {
+function meetup_context_profile_install() {
   // Enable contrib theme.
   theme_enable(array('tao', 'rubik'));
   // Set Rubik as default admin theme.
@@ -22,102 +22,7 @@ function meetup_blocks_profile_install() {
   user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('access content'));
 
   // Insert input formats.
-  meetup_blocks_profile_insert_input_formats();
-
-  // Enable some standard blocks.
-  $default_theme = variable_get('theme_default', 'bartik');
-  $blocks = array(
-    array(
-      'module' => 'system',
-      'delta' => 'main',
-      'theme' => $default_theme,
-      'status' => 1,
-      'weight' => 0,
-      'region' => 'content',
-      'visibility' => 0,
-      'pages' => '',
-      'cache' => -1,
-    ),
-    array(
-      'module' => 'meetup_blocks_core',
-      'delta' => 'author',
-      'theme' => $default_theme,
-      'status' => 1,
-      'weight' => 0,
-      'region' => 'sidebar_second',
-      'visibility' => 1,
-      'pages' => 'videos/*',
-      'cache' => 4,
-    ),
-    array(
-      'module' => 'meetup_blocks_core',
-      'delta' => 'statistics',
-      'theme' => $default_theme,
-      'status' => 1,
-      'weight' => 0,
-      'region' => 'sidebar_second',
-      'visibility' => 1,
-      'pages' => 'videos/*',
-      'cache' => 4,
-    ),
-    array(
-      'module' => 'meetup_blocks_core',
-      'delta' => 'youtube',
-      'theme' => $default_theme,
-      'status' => 1,
-      'weight' => 0,
-      'region' => 'sidebar_second',
-      'visibility' => 1,
-      'pages' => 'videos/*',
-      'cache' => 4,
-    ),
-    array(
-      'module' => 'meetup_blocks_core',
-      'delta' => 'video_list_drupalfacile',
-      'theme' => $default_theme,
-      'status' => 1,
-      'weight' => 0,
-      'region' => 'content',
-      'visibility' => 1,
-      'pages' => '<front>',
-      'cache' => 8,
-    ),
-    array(
-      'module' => 'meetup_blocks_core',
-      'delta' => 'video_list_goldenmoustachevideo',
-      'theme' => $default_theme,
-      'status' => 1,
-      'weight' => 0,
-      'region' => 'content',
-      'visibility' => 1,
-      'pages' => '<front>',
-      'cache' => 8,
-    ),
-    array(
-      'module' => 'system',
-      'delta' => 'help',
-      'theme' => $default_theme,
-      'status' => 1,
-      'weight' => 0,
-      'region' => 'help',
-      'visibility' => 0,
-      'pages' => '',
-      'cache' => -1,
-    ),
-  );
-
-  // 49  meetup_blocks_core  statistics  bartik  1 -9  sidebar_second  0 1 videos/*    4
-  // 50  meetup_blocks_core  youtube bartik  1 -8  sidebar_second  0 1 videos/*    4
-  // 55  meetup_blocks_core  author  bartik  1 -10 sidebar_second  0 1 videos/*    4
-  // 58  meetup_blocks_core  video_list_drupalfacile bartik  1 -10 content 0 1 <front>   8
-  // 59  meetup_blocks_core  video_list_goldenmoustachevideo bartik  1 -9  content 0 1 <front>   8
-
-  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'visibility', 'pages', 'cache'));
-  foreach ($blocks as $block) {
-    $query->values($block);
-  }
-  $query->execute();
-
+  meetup_context_profile_insert_input_formats();
 
   // Insert default pre-defined node types into the database. For a complete
   // list of available node type attributes, refer to the node type API
@@ -273,7 +178,7 @@ function meetup_blocks_profile_install() {
 
 }
 
-function meetup_blocks_profile_insert_input_formats() {
+function meetup_context_profile_insert_input_formats() {
   // Add text formats.
   $filtered_html_format = array(
     'format' => 'filtered_html',

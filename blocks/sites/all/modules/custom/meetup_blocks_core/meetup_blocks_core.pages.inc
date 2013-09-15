@@ -15,7 +15,6 @@ function meetup_blocks_core_video($video_id = NULL) {
   $title = $youtube->getTitle();
   drupal_set_title($title);
 
-
   // Get embed, published date, and description of the video.
   $embed = $youtube->getEmbed();
   $published_date = $youtube->getPublishedDate();
