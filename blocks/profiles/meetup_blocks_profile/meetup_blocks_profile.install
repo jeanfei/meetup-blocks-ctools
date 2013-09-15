@@ -18,6 +18,9 @@ function meetup_blocks_profile_install() {
   // Set Rubik as default admin theme.
   variable_set('admin_theme', 'rubik');
 
+  // Allow user to acces content
+  user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('access content'));
+
   // Insert input formats.
   meetup_blocks_profile_insert_input_formats();
 
