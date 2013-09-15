@@ -1,0 +1,35 @@
+name = Meetup blocks profile
+description = Install with commonly used features and contrib modules pre-configured for blocks demo.
+core = 7.x
+
+; Core modules
+dependencies[] = contextual
+dependencies[] = image
+dependencies[] = list
+dependencies[] = menu
+dependencies[] = number
+dependencies[] = options
+dependencies[] = path
+dependencies[] = syslog
+dependencies[] = taxonomy
+
+; Contrib modules
+dependencies[] = admin_menu
+dependencies[] = admin_menu_toolbar
+dependencies[] = features
+dependencies[] = pathauto
+dependencies[] = strongarm
+dependencies[] = transliteration
+dependencies[] = token
+
+; Developer modules
+;dependencies[] = coder
+dependencies[] = field_ui
+dependencies[] = views_ui
+dependencies[] = devel
+dependencies[] = features_orphans
+dependencies[] = dblog
+
+; Additionnal modules used for demo
+dependencies[] = block
+
