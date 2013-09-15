@@ -1,0 +1,7 @@
+name = Meetup blocks - Core
+description = Provides global helpers and features for meetup blocks websites.
+core = 7.x
+version = "7.x-1.0"
+package = Meetup - Blocks
+
+dependencies[] = youtube_api

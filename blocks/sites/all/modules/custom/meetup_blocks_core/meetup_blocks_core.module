@@ -1,0 +1,120 @@
+<?php
+
+/**
+ * @file
+ * Provides global helpers and features for meetup blocks websites.
+ */
+
+
+/**
+ * Implements hook_menu().
+ */
+function meetup_blocks_core_menu() {
+  $items['videos/%'] = array(
+    'title' => 'Videos',
+    // 'title callback' => 'meetup_blocks_core_video_title',
+    // 'title arguments' => array(1),
+    'description' => 'Retrieves video youtube information.',
+    'page callback' => 'meetup_blocks_core_video',
+    'page arguments' => array(1),
+    'access arguments' => array('access content'),
+    'weight' => -10,
+    'file' => 'meetup_blocks_core.pages.inc',
+  );
+
+  return $items;
+}
+
+
+/**
+ * Returns a menu title which includes the number of unapproved comments.
+ */
+// function meetup_blocks_core_video_title($video_id) {
+//   // $params = array();
+//   // $params['id'] = check_plain($video_id);
+//   // $youtube = new Drupal\youtube_api\YoutubeVideo($params);
+//   // $title = $youtube->getTitle();
+//   // return $title;
+// }
+
+
+/**
+ * Implements hook_block_info().
+ */
+function meetup_blocks_core_block_info() {
+  $blocks['author']['info'] = t('Meetup - Blocks - Author information');
+  $blocks['author']['cache'] = DRUPAL_CACHE_PER_PAGE;
+
+  $blocks['statistics']['info'] = t('Meetup - Blocks - Statistics information');
+  $blocks['statistics']['cache'] = DRUPAL_CACHE_PER_PAGE;
+
+  $blocks['youtube']['info'] = t('Meetup - Blocks - See more in youtube');
+  $blocks['youtube']['cache'] = DRUPAL_CACHE_PER_PAGE;
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function meetup_blocks_core_block_view($delta = '') {
+  // Beurk...
+  $video_id = check_plain(arg(1));
+
+  $block = array();
+
+  switch ($delta) {
+    case 'author':
+      dd('Generate author block');
+      $params = array();
+      $params['id'] = $video_id;
+      $youtube = new Drupal\youtube_api\YoutubeVideo($params);
+      $author = $youtube->getAuthor();
+      $author_id = $youtube->getAuthorId();
+      $videos_link = l($author_id, $youtube->getVideosUrlOfAuthor());
+
+      $block['subject'] = t('Author information');
+      $block['content'] = $author . ' (' . $videos_link . ' )';
+      break;
+
+    case 'statistics':
+      dd('Generate statistics block');
+      $params = array();
+      $params['id'] = $video_id;
+      $youtube = new Drupal\youtube_api\YoutubeVideo($params);
+      $view_count = $youtube->getViewCount();
+      $num_likes = $youtube->getNumLikes();
+
+      $block['subject'] = t('Statistics information');
+      $block['content'] = '<p>' . $view_count . ' viewed</p>';
+      $block['content'] .= '<p>' . $num_likes . ' likes</p>';
+      break;
+
+    case 'youtube':
+      dd('Generate youtube block');
+      $params = array();
+      $params['id'] = $video_id;
+      $youtube = new Drupal\youtube_api\YoutubeVideo($params);
+      $videos_link = l('See this video on Youtube', $youtube->getVideosUrl());
+
+      $block['subject'] = t('See more');
+      $block['content'] = $videos_link;
+      break;
+  }
+  return $block;
+}
+
+
+/**
+ * Get the entity controller class for an entity type.
+ */
+// function entity_get_controller($entity_type) {
+//   $controllers = &drupal_static(__FUNCTION__, array());
+//   if (!isset($controllers[$entity_type])) {
+//     $type_info = entity_get_info($entity_type);
+//     $class = $type_info['controller class'];
+//     $controllers[$entity_type] = new $class($entity_type);
+//   }
+//   return $controllers[$entity_type];
+// }
+

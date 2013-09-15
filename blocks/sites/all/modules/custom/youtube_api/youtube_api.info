@@ -1,0 +1,7 @@
+name = Youtube API
+description = Provides abstraction to request youtube api.
+core = 7.x
+version = "7.x-1.0"
+package = Meetup
+
+dependencies[] = xautoload
