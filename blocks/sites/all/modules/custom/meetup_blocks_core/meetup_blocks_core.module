@@ -51,6 +51,12 @@ function meetup_blocks_core_block_info() {
   $blocks['youtube']['info'] = t('Meetup - Blocks - See more in youtube');
   $blocks['youtube']['cache'] = DRUPAL_CACHE_PER_PAGE;
 
+  $blocks['video_list_drupalfacile']['info'] = t('Meetup - Blocks - Drupal Facile videos list');
+  $blocks['video_list_drupalfacile']['cache'] = DRUPAL_CACHE_GLOBAL;
+
+  $blocks['video_list_goldenmoustachevideo']['info'] = t('Meetup - Blocks - GoldenMoustacheVideo videos list');
+  $blocks['video_list_goldenmoustachevideo']['cache'] = DRUPAL_CACHE_GLOBAL;
+
   return $blocks;
 }
 
@@ -99,6 +105,28 @@ function meetup_blocks_core_block_view($delta = '') {
 
       $block['subject'] = t('See more');
       $block['content'] = $videos_link;
+      break;
+
+    case 'video_list_drupalfacile':
+      dd('Generate Drupal facile video list');
+      $params = array();
+      $params['author'] = 'DrupalFacile';
+      $youtube = new Drupal\youtube_api\YoutubeVideoList($params);
+      $videos = $youtube->getVideos();
+
+      $block['subject'] = t('Drupal Facile videos list');
+      $block['content'] = theme('item_list', array('items' => $videos));
+      break;
+
+    case 'video_list_goldenmoustachevideo':
+      dd('Generate GoldenMoustacheVideo video list');
+      $params = array();
+      $params['author'] = 'GoldenMoustacheVideo';
+      $youtube = new Drupal\youtube_api\YoutubeVideoList($params);
+      $videos = $youtube->getVideos();
+
+      $block['subject'] = t('GoldenMoustacheVideo videos list');
+      $block['content'] = theme('item_list', array('items' => $videos));
       break;
   }
   return $block;

@@ -24,6 +24,7 @@ class YoutubeVideo {
       'alt' => $this->apiFormat,
     );
     $url = url($url, array('query' => $query));
+    dd('http request : ' . $url);
 
     $result = drupal_http_request($url);
     if (!isset($result->error)) {
@@ -31,7 +32,7 @@ class YoutubeVideo {
       $response = json_decode($response);
       $this->information = $response;
     }
-    dpm($this->information);
+    // dpm($this->information);
   }
 
 
