@@ -1,7 +1,0 @@
-name = Meetup ctools - Core
-description = Provides global helpers and features for meetup ctools websites.
-core = 7.x
-version = "7.x-1.0"
-package = Meetup - Ctools
-
-dependencies[] = youtube_api
