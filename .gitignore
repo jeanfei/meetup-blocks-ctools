@@ -1,12 +1,9 @@
 # Ignore configuration files that may contain sensitive information.
-blocks/sites/*/settings.local.php
-ctools/sites/*/settings.local.php
+drupal7-demo/sites/*/settings.local.php
 
 # Ignore paths that contain user-generated content.
-blocks/sites/*/files
-blocks/sites/*/private
-ctools/sites/*/files
-ctools/sites/*/private
+drupal7-demo/sites/*/files
+drupal7-demo/sites/*/private
 
 # Ignore local build.properties, specific for each environnement
 build.properties
