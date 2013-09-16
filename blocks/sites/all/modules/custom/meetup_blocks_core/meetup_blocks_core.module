@@ -11,6 +11,7 @@
  */
 function meetup_blocks_core_menu() {
   $items['videos/%'] = array(
+  // $items['videos/%video'] = array(
     'title' => 'Videos',
     'description' => 'Retrieves video youtube information.',
     'page callback' => 'meetup_blocks_core_video',
@@ -50,17 +51,14 @@ function meetup_blocks_core_block_info() {
  * Implements hook_block_view().
  */
 function meetup_blocks_core_block_view($delta = '') {
-  // Beurk...
-  $video_id = check_plain(arg(1));
-
   $block = array();
 
   switch ($delta) {
     case 'author':
       dd('Generate author block');
-      $params = array();
-      $params['id'] = $video_id;
-      $youtube = new Drupal\youtube_api\YoutubeVideo($params);
+      $video_id = check_plain(arg(1)); // hard coding position argument
+
+      $youtube = meetup_blocks_core_video_load($video_id);
       $author = $youtube->getAuthor();
       $author_id = $youtube->getAuthorId();
       $videos_link = l($author_id, $youtube->getVideosUrlOfAuthor());
@@ -71,9 +69,9 @@ function meetup_blocks_core_block_view($delta = '') {
 
     case 'statistics':
       dd('Generate statistics block');
-      $params = array();
-      $params['id'] = $video_id;
-      $youtube = new Drupal\youtube_api\YoutubeVideo($params);
+      $video_id = check_plain(arg(1)); // hard coding position argument
+
+      $youtube = meetup_blocks_core_video_load($video_id);
       $view_count = $youtube->getViewCount();
       $num_likes = $youtube->getNumLikes();
 
@@ -84,9 +82,9 @@ function meetup_blocks_core_block_view($delta = '') {
 
     case 'youtube':
       dd('Generate youtube block');
-      $params = array();
-      $params['id'] = $video_id;
-      $youtube = new Drupal\youtube_api\YoutubeVideo($params);
+      $video_id = check_plain(arg(1)); // hard coding position argument
+
+      $youtube = meetup_blocks_core_video_load($video_id);
       $videos_link = l('See this video on Youtube', $youtube->getVideosUrl());
 
       $block['subject'] = t('See more');
@@ -95,6 +93,7 @@ function meetup_blocks_core_block_view($delta = '') {
 
     case 'video_list_drupalfacile':
       dd('Generate Drupal facile video list');
+
       $params = array();
       $params['author'] = 'DrupalFacile';
       $youtube = new Drupal\youtube_api\YoutubeVideoList($params);
@@ -106,6 +105,7 @@ function meetup_blocks_core_block_view($delta = '') {
 
     case 'video_list_goldenmoustachevideo':
       dd('Generate GoldenMoustacheVideo video list');
+
       $params = array();
       $params['author'] = 'GoldenMoustacheVideo';
       $youtube = new Drupal\youtube_api\YoutubeVideoList($params);
@@ -122,13 +122,22 @@ function meetup_blocks_core_block_view($delta = '') {
 /**
  * Get the entity controller class for an entity type.
  */
-// function entity_get_controller($entity_type) {
-//   $controllers = &drupal_static(__FUNCTION__, array());
-//   if (!isset($controllers[$entity_type])) {
-//     $type_info = entity_get_info($entity_type);
-//     $class = $type_info['controller class'];
-//     $controllers[$entity_type] = new $class($entity_type);
-//   }
-//   return $controllers[$entity_type];
+function meetup_blocks_core_video_load($video_id) {
+  $videos = &drupal_static(__FUNCTION__, array());
+  if (!isset($videos[$video_id])) {
+    $params = array();
+    $params['id'] = $video_id;
+    $youtube = new Drupal\youtube_api\YoutubeVideo($params);
+    $videos[$video_id] = $youtube;
+  }
+  return $videos[$video_id];
+}
+
+
+// function video_load($video_id) {
+//   $params = array();
+//   $params['id'] = $video_id;
+//   $youtube = new Drupal\youtube_api\YoutubeVideo($params);
+//   return $youtube;
 // }
 

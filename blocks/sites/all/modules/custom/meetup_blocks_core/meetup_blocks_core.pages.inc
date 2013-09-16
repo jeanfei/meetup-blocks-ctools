@@ -7,9 +7,7 @@
  */
 function meetup_blocks_core_video($video_id = NULL) {
   dd('Generate video content');
-  $params = array();
-  $params['id'] = check_plain($video_id);
-  $youtube = new Drupal\youtube_api\YoutubeVideo($params);
+  $youtube = meetup_blocks_core_video_load($video_id);
 
   // Set title of the page.
   $title = $youtube->getTitle();
