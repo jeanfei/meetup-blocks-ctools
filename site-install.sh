@@ -21,6 +21,13 @@ meetup_ctools_profile() {
   echo "End - Installing meetup ctools demo"
 }
 
+# Installing meetup_demo_profile profile
+meetup_demo_profile() {
+  echo "Start - Installing meetup demo"
+  cd drupal7-demo; drush site-install meetup_demo_profile --account-pass='admin' --site-name='Meetup - Demo' --locale='fr' -y
+  echo "End - Installing meetup demo"
+}
+
 
 # Prompt for user
 while true; do
@@ -29,6 +36,7 @@ while true; do
   echo "1. Installing Drupal7 meetup blocks demo"
   echo "2. Installing Drupal7 meetup context demo"
   echo "3. Installing Drupal7 meetup ctools demo"
+  echo "4. Installing Drupal7 meetup demo (nothing configured)"
   # echo "4. Installing Drupal8 meetup layout demo"
   echo
 
@@ -43,6 +51,7 @@ while true; do
       1 ) meetup_blocks_profile; break;;
       2 ) meetup_context_profile; break;;
       3 ) meetup_ctools_profile; break;;
+      4 ) meetup_demo_profile; break;;
       * ) echo "Please select a valid choice.";;
     esac
 done
