@@ -4,3 +4,13 @@
  * @file
  * This module provides global helpers and features for jedi websites.
  */
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function meetup_ctools_core_ctools_plugin_directory($module, $plugin) {
+  if (($module == 'ctools' && !empty($plugin)) || ($module == 'panels' && !empty($plugin))) {
+    return "plugins/$plugin";
+  }
+}
+
