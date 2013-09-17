@@ -33,3 +33,4 @@ dependencies[] = dblog
 ; Additionnal modules used for demo
 dependencies[] = block
 dependencies[] = meetup_blocks_core
+dependencies[] = context_ui
