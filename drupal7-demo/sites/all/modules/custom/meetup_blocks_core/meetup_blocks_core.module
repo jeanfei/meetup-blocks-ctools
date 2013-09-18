@@ -55,7 +55,7 @@ function meetup_blocks_core_block_view($delta = '') {
 
   switch ($delta) {
     case 'author':
-      dd('Generate author block');
+      // dd('Generate author block');
       $video_id = check_plain(arg(1)); // hard coding position argument
 
       $youtube = meetup_blocks_core_video_load($video_id);
@@ -68,7 +68,7 @@ function meetup_blocks_core_block_view($delta = '') {
       break;
 
     case 'statistics':
-      dd('Generate statistics block');
+      // dd('Generate statistics block');
       $video_id = check_plain(arg(1)); // hard coding position argument
 
       $youtube = meetup_blocks_core_video_load($video_id);
@@ -81,7 +81,7 @@ function meetup_blocks_core_block_view($delta = '') {
       break;
 
     case 'youtube':
-      dd('Generate youtube block');
+      // dd('Generate youtube block');
       $video_id = check_plain(arg(1)); // hard coding position argument
 
       $youtube = meetup_blocks_core_video_load($video_id);
@@ -92,7 +92,7 @@ function meetup_blocks_core_block_view($delta = '') {
       break;
 
     case 'video_list_drupalfacile':
-      dd('Generate Drupal facile video list');
+      // dd('Generate Drupal facile video list');
 
       $params = array();
       $params['author'] = 'DrupalFacile';
@@ -104,7 +104,7 @@ function meetup_blocks_core_block_view($delta = '') {
       break;
 
     case 'video_list_goldenmoustachevideo':
-      dd('Generate GoldenMoustacheVideo video list');
+      // dd('Generate GoldenMoustacheVideo video list');
 
       $params = array();
       $params['author'] = 'GoldenMoustacheVideo';

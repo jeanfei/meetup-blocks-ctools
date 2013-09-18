@@ -13,4 +13,3 @@ function meetup_ctools_core_ctools_plugin_directory($module, $plugin) {
     return "plugins/$plugin";
   }
 }
-

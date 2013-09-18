@@ -34,3 +34,5 @@ dependencies[] = dblog
 dependencies[] = block
 dependencies[] = meetup_blocks_core
 dependencies[] = context_ui
+dependencies[] = page_manager
+dependencies[] = meetup_ctools_core

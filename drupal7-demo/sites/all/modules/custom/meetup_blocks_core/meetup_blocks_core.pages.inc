@@ -6,7 +6,7 @@
  * @return html             embed of the video
  */
 function meetup_blocks_core_video($video_id = NULL) {
-  dd('Generate video content');
+  // dd('Generate video content');
   $youtube = meetup_blocks_core_video_load($video_id);
 
   // Set title of the page.
