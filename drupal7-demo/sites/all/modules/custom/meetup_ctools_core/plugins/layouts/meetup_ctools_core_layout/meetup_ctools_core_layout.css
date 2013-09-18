@@ -1,0 +1,23 @@
+/* Layout styles */
+.panel-col-middle,
+.panel-col-first,
+.panel-col-last {
+  display: inline;
+  float: left; /* LTR */
+  position: relative;
+}
+.layout-one-sidebar .panel-col-middle {
+  width: 690px;
+}
+.layout-two-sidebars .panel-col-middle {
+  width: 450px;
+}
+.layout-no-sidebars .panel-col-middle {
+  width: 900px;
+  float: none;
+}
+
+.panel-col-first,
+.panel-col-last {
+  width: 240px;
+}

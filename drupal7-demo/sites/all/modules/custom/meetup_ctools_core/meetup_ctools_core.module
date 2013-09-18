@@ -13,3 +13,23 @@ function meetup_ctools_core_ctools_plugin_directory($module, $plugin) {
     return "plugins/$plugin";
   }
 }
+
+
+/**
+ * Preprocess function for jedi_admin layout.
+ */
+function meetup_ctools_core_preprocess_meetup_ctools_core_layout(&$variables) {
+  // Set class two-sidebar into body if both sidebars have content.
+  if (!empty($variables['content']['left']) && !empty($variables['content']['right'])) {
+    $variables['sidebars_class'] = 'layout-two-sidebar';
+  }
+  // Set class sidebar-first into body only if first sidebar have content.
+  elseif ((!empty($variables['content']['left']) && empty($variables['content']['right']))||
+    (empty($variables['content']['left']) && !empty($variables['content']['right']))) {
+    $variables['sidebars_class'] = 'layout-one-sidebar';
+  }
+  // Set class sidebar-second into body only if second sidebar have content.
+  elseif (empty($variables['content']['sidebar-first']) && empty($variables['content']['sidebar-second'])) {
+    $variables['sidebars_class'] = 'layout-no-sidebars';
+  }
+}
