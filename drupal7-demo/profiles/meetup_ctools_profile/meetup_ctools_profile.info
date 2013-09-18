@@ -35,3 +35,5 @@ dependencies[] = ctools
 dependencies[] = panels
 dependencies[] = panels_everywhere
 dependencies[] = meetup_ctools_core
+dependencies[] = meetup_ctools_homepage
+dependencies[] = meetup_ctools_videos

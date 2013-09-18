@@ -14,7 +14,6 @@ function meetup_ctools_core_youtube_video_from_user_ctools_content_types() {
     'single' => TRUE,
     'category' => array(t('Meetup - Ctools'), 10),
     'edit form' => 'meetup_ctools_core_youtube_video_from_user_edit_form',
-    'required context' => new ctools_context_required(t('Youtube'), 'youtube_context'),
   );
 }
 
@@ -33,10 +32,6 @@ function meetup_ctools_core_youtube_video_from_user_ctools_content_types() {
  *   An object with at least title and content members.
  */
 function meetup_ctools_core_youtube_video_from_user_content_type_render($subtype, $conf, $args, $context) {
-  if (empty($context) || empty($context->data)) {
-    return;
-  }
-
   if (!empty($conf)) {
     $youtube_user_id = $conf['youtube_user_id'];
     $params = array();

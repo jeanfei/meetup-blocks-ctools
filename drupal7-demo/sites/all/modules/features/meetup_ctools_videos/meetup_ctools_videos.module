@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Meetup - ctools - Videos feature.
+ */
+
+include_once 'meetup_ctools_videos.features.inc';

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Meetup - ctools - Homepage feature.
+ */
+
+include_once 'meetup_ctools_homepage.features.inc';
