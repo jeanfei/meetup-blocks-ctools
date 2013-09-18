@@ -10,3 +10,4 @@ dependencies[] = meetup_blocks_core
 features[context][] = homepage
 features[ctools][] = context:context:3
 features[features_api][] = api:2
+features[variable][] = "site_frontpage"
