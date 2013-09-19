@@ -39,6 +39,5 @@ $databases = array (
 ```
 
 2. Install the project with meetup blocks installation profile with one of the following solution :
-    1. Basic web install in domain.tld/install.php (select meetup_blocks profile during installation)
-    2.1 cd blocks; drush site-install --account-pass='admin' --site-name='Meetup - Blocks demo' -y
-    2.2 cd ctools; drush site-install --account-pass='admin' --site-name='Meetup - Ctools demo' -y
+  1. Basic web install in domain.tld/install.php (select meetup_blocks profile during installation)
+  2. Execute ./site-install.sh and select the installation profile you want !

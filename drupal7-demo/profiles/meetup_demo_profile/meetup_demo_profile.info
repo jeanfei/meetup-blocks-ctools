@@ -35,4 +35,6 @@ dependencies[] = block
 dependencies[] = meetup_blocks_core
 dependencies[] = context_ui
 dependencies[] = page_manager
+dependencies[] = panels
+dependencies[] = panels_everywhere
 dependencies[] = meetup_ctools_core
